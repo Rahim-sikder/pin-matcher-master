@@ -21,4 +21,48 @@ document.getElementById('generate-pin').addEventListener('click', function(){
    const dispalyPinField = document.getElementById('display-pin');
    dispalyPinField.value = pin;
 
+});
+
+// calculator 
+document.getElementById('calculator').addEventListener('click', function(){
+   const number = event.target.innerText;
+   const typeNumberField = document.getElementById('typed-numbers')
+   if (isNaN(number)){
+      console.log(number);
+      if (number === 'C'){
+         typeNumberField.value = '';
+      }
+      else if (number === '<'){
+         const digits = previousTypedNumber.splite('');
+         digits.pop();
+         const remainingDigits = digits.join();
+         typeNumberField.value = remainingDigits;
+
+      }
+   }
+   else{
+     
+      const previousTypedNumber = typeNumberField.value;
+      const newTypedNumber = previousTypedNumber + number;
+      typeNumberField.value = newTypedNumber;
+   }
+    
+      
+});
+
+document.getElementById ('verify-pin').addEventListener ('click', function(){
+   const dispalyPinField = document.getElementById('display-pin');
+   const currentPin = dispalyPinField.value;
+
+   const typedNumberField = document.getElementById('typed-numbers');
+        typedNumber = typedNumberField.value;
+
+        if ( typedNumber === currentPin){
+           const pinSuccessMessage = document.getElementById('pin-success');
+           pinSuccessMessage.style.display = 'block';
+        }
+        else{
+          const pinFailureMessage = document.getElementById ('pin-failure');
+          pinFailureMessage.style.display = 'block';
+        }
 })
